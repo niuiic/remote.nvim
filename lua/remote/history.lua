@@ -82,7 +82,20 @@ local select_from_history = function(cb)
 	end)
 end
 
+local edit_history = function()
+	local core = require("core")
+	local history_file = static.config.history_file
+	if not history_file or not core.file.file_or_dir_exists(history_file) then
+		vim.notify("No history found.", vim.log.levels.WARN, {
+			title = "Remote",
+		})
+		return
+	end
+	vim.cmd("e " .. history_file)
+end
+
 return {
 	record_history = record_history,
 	select_from_history = select_from_history,
+	edit_history = edit_history,
 }
