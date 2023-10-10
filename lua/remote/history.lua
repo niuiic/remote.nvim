@@ -1,5 +1,57 @@
 local static = require("remote.static")
 
+--- whether config a equals config b
+---@param a Remote.Config
+---@param b Remote.Config
+---@return boolean
+local is_same_config = function(a, b)
+	local core = require("core")
+
+	if a.host ~= b.host then
+		return false
+	end
+
+	if a.user ~= b.user then
+		return false
+	end
+
+	if a.passwd ~= b.passwd then
+		return false
+	end
+
+	if a.path ~= b.path then
+		return false
+	end
+
+	if a.excludes and not b.excludes then
+		return false
+	end
+
+	if not a.excludes and b.excludes then
+		return false
+	end
+
+	if not a.excludes and not b.excludes then
+		return true
+	end
+
+	if table.maxn(a.excludes) ~= table.maxn(b.excludes) then
+		return false
+	end
+
+	if
+		not core.lua.list.reduce(a.excludes, function(prev_res, x)
+			return prev_res and core.lua.list.includes(b.excludes, function(y)
+				return x == y
+			end)
+		end, true)
+	then
+		return false
+	end
+
+	return true
+end
+
 --- read history from file
 ---@return Remote.Config[] | nil
 local read_history = function()
@@ -34,7 +86,9 @@ local record_history = function(config)
 
 	if not history then
 		history = { config }
-	else
+	elseif not core.lua.list.includes(history, function(x)
+		return is_same_config(x, config)
+	end) then
 		table.insert(history, config)
 	end
 
@@ -82,6 +136,7 @@ local select_from_history = function(cb)
 	end)
 end
 
+--- edit history file
 local edit_history = function()
 	local core = require("core")
 	local history_file = static.config.history_file
