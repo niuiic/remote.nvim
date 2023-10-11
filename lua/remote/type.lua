@@ -1,7 +1,7 @@
 ---@class Remote.Config
 ---@field host string
 ---@field user string
----@field passwd string | nil
+---@field passwd string
 ---@field path string
 ---@field excludes string[] | nil
 
