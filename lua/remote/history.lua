@@ -7,32 +7,23 @@ local static = require("remote.static")
 local is_same_config = function(a, b)
 	local core = require("core")
 
-	if a.host ~= b.host then
-		return false
-	end
-
-	if a.user ~= b.user then
-		return false
-	end
-
-	if a.passwd ~= b.passwd then
-		return false
-	end
-
-	if a.path ~= b.path then
-		return false
-	end
-
-	if a.excludes and not b.excludes then
-		return false
-	end
-
-	if not a.excludes and b.excludes then
-		return false
+	for _, field in ipairs({
+		"host",
+		"user",
+		"passwd",
+		"path",
+	}) do
+		if a[field] ~= b[field] then
+			return false
+		end
 	end
 
 	if not a.excludes and not b.excludes then
 		return true
+	end
+
+	if (a.excludes == nil) ~= (b.excludes == nil) then
+		return false
 	end
 
 	if table.maxn(a.excludes) ~= table.maxn(b.excludes) then
