@@ -1,8 +1,8 @@
 local static = require("remote.static")
 
 --- whether config a equals config b
----@param a Remote.Config
----@param b Remote.Config
+---@param a remote.Config
+---@param b remote.Config
 ---@return boolean
 local is_same_config = function(a, b)
 	local core = require("core")
@@ -44,7 +44,7 @@ local is_same_config = function(a, b)
 end
 
 --- read history from file
----@return Remote.Config[] | nil
+---@return remote.Config[] | nil
 local read_history = function()
 	local core = require("core")
 	local history_file = static.config.history_file
@@ -61,7 +61,7 @@ local read_history = function()
 end
 
 --- record remote file info
----@param config Remote.Config
+---@param config remote.Config
 local record_history = function(config)
 	local core = require("core")
 
@@ -92,7 +92,7 @@ local record_history = function(config)
 end
 
 --- select config from history
----@param cb fun(config: Remote.Config)
+---@param cb fun(config: remote.Config)
 local select_from_history = function(cb)
 	local core = require("core")
 

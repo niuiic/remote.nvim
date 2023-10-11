@@ -1,11 +1,11 @@
----@class Remote.Config
+---@class remote.Config
 ---@field host string
 ---@field user string
 ---@field passwd string
 ---@field path string
 ---@field excludes string[] | nil
 
----@class Remote.ConfigPartial
+---@class remote.ConfigPartial
 ---@field host string | nil
 ---@field user string | nil
 ---@field passwd string | nil

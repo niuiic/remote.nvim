@@ -1,5 +1,5 @@
 --- collect config with user input
----@param config Remote.ConfigPartial | nil
+---@param config remote.ConfigPartial | nil
 local collect_config = function(config)
 	local core = require("core")
 
@@ -34,7 +34,7 @@ local collect_config = function(config)
 end
 
 --- validate config
----@param config Remote.Config
+---@param config remote.Config
 ---@return boolean
 local validate_config = function(config)
 	for _, field in ipairs({
