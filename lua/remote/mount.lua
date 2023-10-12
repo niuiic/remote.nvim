@@ -1,5 +1,5 @@
 local core = require("core")
-local log = require("remote.log")
+local log = require("remote.log").log
 
 --- mount remote dir
 ---@param config remote.Config

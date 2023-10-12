@@ -2,6 +2,7 @@ local static = require("remote.static")
 local core = require("core")
 local config = require("remote.config")
 local mount = require("remote.mount")
+local log = require("remote.log")
 
 local connected = false
 local cur_config_list = {}
@@ -95,4 +96,5 @@ return {
 	disconnect = disconnect,
 	reconnect = reconnect,
 	edit_config = config.edit_config,
+	check_log = log.check_log,
 }
