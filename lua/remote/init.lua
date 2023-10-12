@@ -49,9 +49,6 @@ local disconnect = vim.schedule_wrap(function()
 
 	core.lua.list.each(cur_config_list, function(x)
 		mount.unmount(x)
-		if static.config.remove_mount_point_on_disconnect then
-			core.file.rmdir(x.mount_point)
-		end
 	end)
 
 	vim.notify("Disconnected", vim.log.levels.INFO, {
