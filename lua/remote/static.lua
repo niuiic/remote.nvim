@@ -1,6 +1,7 @@
 local config = {
-	history_file = vim.fn.stdpath("data") .. "/remote-history",
-	log_file = vim.fn.stdpath("data") .. "/remote-log",
+	config_file = ".nvim/remote.json",
+	log_file = ".nvim/remote.log",
+	disconnect_on_leave = true,
 }
 
 return {

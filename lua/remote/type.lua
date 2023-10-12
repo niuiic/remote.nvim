@@ -2,12 +2,6 @@
 ---@field host string
 ---@field user string
 ---@field passwd string
----@field path string
----@field excludes string[] | nil
-
----@class remote.ConfigPartial
----@field host string | nil
----@field user string | nil
----@field passwd string | nil
----@field path string | nil
----@field excludes string[] | nil
+---@field remote_dir string
+---@field mount_point string
+---@field options string[] | nil
