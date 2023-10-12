@@ -1,4 +1,5 @@
 local static = require("remote.static")
+local core = require("core")
 
 --- validate config
 ---@param config remote.Config
@@ -21,8 +22,6 @@ end
 
 --- edit config file
 local edit_config = function()
-	local core = require("core")
-
 	local config_file = static.config.config_file
 	local config_dir = core.file.dir(config_file)
 
@@ -39,8 +38,6 @@ end
 --- load config list from config file
 ---@return remote.Config[]
 local load_config = function()
-	local core = require("core")
-
 	local config_file = static.config.config_file
 	local config_list = {}
 
