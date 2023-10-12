@@ -65,7 +65,19 @@ Here is the default configuration.
 	config_file = ".nvim/remote.json",
 	log_file = ".nvim/remote.log",
 	disconnect_on_leave = true,
+	---@type fun(config: remote.Config)
+	on_each_connected = function() end,
+	---@type fun(config: remote.Config)
+	on_each_disconnected = function() end,
 }
+
+---@class remote.Config
+---@field host string
+---@field user string
+---@field passwd string
+---@field remote_dir string
+---@field mount_point string
+---@field options string[] | nil
 ```
 
 ## Troubleshooting
