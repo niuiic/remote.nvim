@@ -6,21 +6,21 @@ local mount = require("remote.mount")
 local connected = false
 local cur_config_list = {}
 
+---@return boolean
 local connect = vim.schedule_wrap(function()
 	if connected then
 		vim.notify("Has connected", vim.log.levels.WARN, {
 			title = "Remote",
 		})
-		return
+		return false
 	end
-	connected = true
 
 	local ok, config_list = pcall(config.load_config)
 	if not ok then
 		vim.notify("Wrong configuration", vim.log.levels.ERROR, {
 			title = "Remote",
 		})
-		return
+		return false
 	end
 
 	cur_config_list = config_list
@@ -31,16 +31,20 @@ local connect = vim.schedule_wrap(function()
 	vim.notify("Connected", vim.log.levels.INFO, {
 		title = "Remote",
 	})
+
+	connected = true
+
+	return true
 end)
 
+---@return boolean
 local disconnect = vim.schedule_wrap(function()
 	if not connected then
 		vim.notify("Not connected", vim.log.levels.WARN, {
 			title = "Remote",
 		})
-		return
+		return false
 	end
-	connected = false
 
 	core.lua.list.each(cur_config_list, function(x)
 		mount.unmount(x)
@@ -49,11 +53,24 @@ local disconnect = vim.schedule_wrap(function()
 	vim.notify("Disconnected", vim.log.levels.INFO, {
 		title = "Remote",
 	})
+
+	connected = false
+
+	return true
 end)
 
+---@return boolean
 local reconnect = function()
-	disconnect()
-	connect()
+	if not connected then
+		return connect()
+	end
+
+	local ok = disconnect()
+	if not ok then
+		return false
+	end
+
+	return connect()
 end
 
 vim.api.nvim_create_autocmd("VimLeave", {
