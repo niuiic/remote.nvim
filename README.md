@@ -49,6 +49,8 @@ Avaliable functions.
 - [sshpass](https://sourceforge.net/projects/sshpass)
 - [niuiic/core.nvim](https://github.com/niuiic/core.nvim)
 
+> All dependencies are only required locally.
+
 ## Config
 
 Here is the default configuration.
