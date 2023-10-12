@@ -25,7 +25,7 @@ local mount = function(config)
 	)
 	if config.options then
 		core.lua.list.each(config.options, function(option)
-			command = command .. " -o " .. option
+			command = command .. " " .. option
 		end)
 	end
 
