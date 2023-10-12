@@ -8,6 +8,8 @@ Edit remote files with local neovim configuration.
 
 ## Usage
 
+<img src="https://github.com/niuiic/assets/blob/main/remote.nvim/usage.gif" />
+
 First add a configuration.
 
 Here is an example.
@@ -32,6 +34,8 @@ Here is an example.
 ]
 ```
 
+> `remote_dir` and `mount_point` should be directories.
+
 Then you can connect to remote directory with `require("remote").connect()`.
 
 Avaliable functions.
@@ -42,6 +46,7 @@ Avaliable functions.
 | disconnect  | disconnect                        |
 | reconnect   | reconnect                         |
 | edit_config | edit configuration                |
+| check_log   | check log file                    |
 
 ## Dependencies
 
