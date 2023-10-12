@@ -34,7 +34,7 @@ Here is an example.
 ]
 ```
 
-> `remote_dir` and `mount_point` should be directories.
+> `remote_dir` and `mount_point` should be directories. `options` will be passed to `sshfs`.
 
 Then you can connect to remote directory with `require("remote").connect()`.
 
