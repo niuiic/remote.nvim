@@ -52,6 +52,7 @@ Avaliable functions.
 
 - [sshfs](https://github.com/libfuse/sshfs)
 - [sshpass](https://sourceforge.net/projects/sshpass)
+- umount
 - [niuiic/core.nvim](https://github.com/niuiic/core.nvim)
 
 > All dependencies are only required locally.
