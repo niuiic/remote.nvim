@@ -26,6 +26,7 @@ local connect = vim.schedule_wrap(function()
 
 	cur_config_list = config_list
 	core.lua.list.each(cur_config_list, function(x)
+		static.config.on_each_to_connect(x)
 		mount.mount(x)
 		static.config.on_each_connected(x)
 	end)
@@ -49,6 +50,7 @@ local disconnect = vim.schedule_wrap(function()
 	end
 
 	core.lua.list.each(cur_config_list, function(x)
+		static.config.on_each_to_disconnect(x)
 		mount.unmount(x)
 		static.config.on_each_disconnected(x)
 	end)
