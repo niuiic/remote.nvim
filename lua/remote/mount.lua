@@ -32,7 +32,7 @@ local mount = function(config)
 	local result = vim.api.nvim_exec2("!" .. command, {
 		output = true,
 	})
-	log(config, result.output)
+	log(config, result.output, "Mount")
 end
 
 --- unmount remote dir
@@ -45,7 +45,7 @@ local unmount = function(config)
 	local result = vim.api.nvim_exec2("!umount " .. config.mount_point, {
 		output = true,
 	})
-	log(config, result.output)
+	log(config, result.output, "Unmount")
 end
 
 return {
