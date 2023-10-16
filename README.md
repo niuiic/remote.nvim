@@ -94,3 +94,7 @@ Check log file, sshfs command may failed for some reason.
 - Remote directories were not updated
 
 Check the document of sshfs.
+
+- Neovim is stuck
+
+Someting wrong with ssh, cancel the task with `<C-c>` and check you configuration.
