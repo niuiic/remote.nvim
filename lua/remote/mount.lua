@@ -1,4 +1,5 @@
 local core = require("core")
+local static = require("remote.static")
 local log = require("remote.log").log
 
 --- mount remote dir
@@ -42,7 +43,7 @@ local unmount = function(config)
 		return
 	end
 
-	local result = vim.api.nvim_exec2("!umount " .. config.mount_point, {
+	local result = vim.api.nvim_exec2("!" .. static.config.unmount(config.mount_point), {
 		output = true,
 	})
 	log(config, result.output, "Unmount")

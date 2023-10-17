@@ -65,6 +65,9 @@ Here is the default configuration.
 {
 	config_file = ".nvim/remote.json",
 	log_file = ".nvim/remote.log",
+	unmount = function(path)
+		return "umount " .. path
+	end,
 	disconnect_on_leave = true,
 	---@type fun(config: remote.Config)
 	on_each_to_connect = function() end,
@@ -98,3 +101,7 @@ Check the document of sshfs.
 - Neovim is stuck
 
 Someting wrong with ssh, cancel the task with `<C-c>` and check you configuration.
+
+- Failed to unmount directories
+
+It may not be possiable to unmount the directories if ssh is unable to connect to the remote machine. You can modify the `unmount` option in configuration to force umount and avoid stuck process. (This always require root privileges, so it's an option.)
