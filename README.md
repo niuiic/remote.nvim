@@ -6,6 +6,8 @@ Edit remote files with local neovim configuration.
 
 **No other dependencies required for remote machine except ssh.**
 
+[More neovim plugins](https://github.com/niuiic/awesome-neovim-plugins)
+
 ## Usage
 
 <img src="https://github.com/niuiic/assets/blob/main/remote.nvim/usage.gif" />
